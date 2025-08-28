@@ -1,7 +1,7 @@
 {
-  "name": "awesome-gemini-image",
+  "name": "awesome-gemini-image-prompts",
   "version": "1.0.0",
-  "description": "一个精选的 Gemini 图像分析资源合集，帮助开发者、创作者和研究者快速上手和深入了解谷歌最新的多模态 AI 模型",
+  "description": "一个精选的 Gemini 图像分析提示词技巧合集，收集各种 KOL 和创作者的创意玩法，帮助你用最少的文字实现最有趣的效果",
   "main": "index.js",
   "scripts": {
     "dev": "vite",

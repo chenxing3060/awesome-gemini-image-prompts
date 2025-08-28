@@ -14,8 +14,8 @@ fi
 
 # 显示项目信息
 echo "📁 项目目录: $(pwd)"
-echo "📚 项目名称: Awesome Gemini Image"
-echo "🔧 技术栈: Python, JavaScript, cURL, Markdown"
+echo "📚 项目名称: Awesome Gemini Image Prompts"
+echo "🔧 技术栈: 提示词技巧合集, Markdown, 社区贡献"
 echo ""
 
 # 检查 Git 状态
