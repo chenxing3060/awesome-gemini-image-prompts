@@ -1,0 +1,41 @@
+# Cursor Rules for Awesome Gemini 2.5 Flash Image Preview Project
+
+## Project Overview
+This is an Awesome collection project for Google's Gemini 2.5 Flash Image Preview model. The project aims to provide comprehensive resources for developers, creators, and researchers to quickly get started and deeply understand the usage of this latest multimodal AI model.
+
+## Code Style Guidelines
+- Use consistent indentation (4 spaces)
+- Follow language-specific conventions
+- Write clear, descriptive variable and function names
+- Add appropriate comments and documentation
+- Use meaningful commit messages
+
+## File Organization
+- Keep examples organized by programming language
+- Maintain consistent directory structure
+- Use descriptive file names
+- Group related functionality together
+
+## Documentation Standards
+- Write clear, comprehensive README files
+- Include usage examples and code snippets
+- Provide step-by-step tutorials
+- Keep documentation up-to-date with code changes
+
+## Contribution Guidelines
+- Welcome contributions from the community
+- Maintain high code quality standards
+- Test all examples before committing
+- Follow the established project structure
+
+## Technology Stack
+- Primary: Markdown documentation
+- Examples: Python, JavaScript, cURL
+- Build tools: Vite, VitePress (optional)
+- Version control: Git
+
+## Focus Areas
+- Comprehensive API usage examples
+- Real-world application scenarios
+- Best practices and optimization tips
+- Community-driven content updates

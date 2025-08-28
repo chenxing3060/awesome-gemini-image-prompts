@@ -1,0 +1,74 @@
+{
+  "name": "awesome-gemini-image",
+  "version": "1.0.0",
+  "description": "一个精选的 Gemini 图像分析资源合集，帮助开发者、创作者和研究者快速上手和深入了解谷歌最新的多模态 AI 模型",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write .",
+    "test": "jest",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "keywords": [
+    "gemini",
+    "ai",
+    "image-analysis",
+    "multimodal",
+    "google-ai",
+    "machine-learning",
+    "computer-vision",
+    "awesome",
+    "tutorial",
+    "examples"
+  ],
+  "author": "Awesome Gemini Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/awesomeuse-nanobanana.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/awesomeuse-nanobanana/issues"
+  },
+  "homepage": "https://github.com/your-username/awesomeuse-nanobanana#readme",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.0.0",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0",
+    "vitepress": "^1.0.0"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.2.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

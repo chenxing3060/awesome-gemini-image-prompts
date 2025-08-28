@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Gemini Image - 演示页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .demo-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .upload-area {
+            border: 3px dashed #ddd;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: #667eea;
+            background-color: #f8f9ff;
+        }
+
+        .upload-area.dragover {
+            border-color: #667eea;
+            background-color: #f0f4ff;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .upload-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+
+        .prompt-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .prompt-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .analyze-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .analyze-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .analyze-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .image-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .image-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .image-item img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .image-item .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255,0,0,0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .results {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 100px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .error {
+            color: #dc3545;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .success {
+            color: #155724;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: #f8f9ff;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .demo-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Awesome Gemini Image</h1>
+            <p>体验谷歌最新的多模态 AI 模型的强大功能</p>
+        </div>
+
+        <div class="demo-section">
+            <h2>🖼️ 图像分析演示</h2>
+            <p>上传图像，让 AI 为你分析内容、生成描述或回答问题</p>
+            
+            <div class="upload-area" id="uploadArea">
+                <p>拖拽图像文件到这里，或点击选择文件</p>
+                <input type="file" id="imageInput" class="file-input" multiple accept="image/*">
+                <button class="upload-btn" onclick="document.getElementById('imageInput').click()">
+                    选择图像文件
+                </button>
+            </div>
+
+            <div class="image-preview" id="imagePreview"></div>
+
+            <input type="text" class="prompt-input" id="promptInput" 
+                   placeholder="请输入你的问题或指令，例如：请描述这张图片、这张图片里有什么、分析图片的情感色彩等...">
+
+            <button class="analyze-btn" id="analyzeBtn" onclick="analyzeImages()">
+                🔍 开始分析
+            </button>
+
+            <div class="results" id="results">
+                <p style="text-align: center; color: #666;">
+                    分析结果将在这里显示...
+                </p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>✨ 主要特性</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🖼️ 多格式支持</h3>
+                    <p>支持 JPEG、PNG、WebP 等多种图像格式，最大支持 4096x4096 像素</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🧠 智能理解</h3>
+                    <p>能够理解图像内容、识别物体、分析场景、解读情感色彩</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💬 自然对话</h3>
+                    <p>支持多轮对话，可以基于图像进行深入的问答和讨论</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🌍 多语言支持</h3>
+                    <p>支持中文、英文等多种语言，提供本地化的交互体验</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>📚 学习资源</h2>
+            <p>想要深入了解 Gemini 2.5 Flash Image Preview 的使用方法？</p>
+            <ul style="margin-left: 20px; margin-top: 15px;">
+                <li>📖 查看 <a href="README.md">完整文档</a></li>
+                <li>💻 学习 <a href="examples/">代码示例</a></li>
+                <li>🎯 阅读 <a href="tutorials/getting_started.md">快速入门教程</a></li>
+                <li>🤝 参与 <a href="CONTRIBUTING.md">社区贡献</a></li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>🌟 如果这个项目对你有帮助，请给我们一个星标！</p>
+            <p>📄 本项目采用 MIT 许可证</p>
+        </div>
+    </div>
+
+    <script>
+        // 文件上传处理
+        const uploadArea = document.getElementById('uploadArea');
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const results = document.getElementById('results');
+
+        let selectedFiles = [];
+
+        // 拖拽上传
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = Array.from(e.dataTransfer.files);
+            handleFiles(files);
+        });
+
+        // 文件选择
+        imageInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            handleFiles(files);
+        });
+
+        function handleFiles(files) {
+            const imageFiles = files.filter(file => file.type.startsWith('image/'));
+            selectedFiles = [...selectedFiles, ...imageFiles];
+            updateImagePreview();
+        }
+
+        function updateImagePreview() {
+            imagePreview.innerHTML = '';
+            selectedFiles.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const div = document.createElement('div');
+                    div.className = 'image-item';
+                    div.innerHTML = `
+                        <img src="${e.target.result}" alt="${file.name}">
+                        <button class="remove-btn" onclick="removeImage(${index})">×</button>
+                    `;
+                    imagePreview.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function removeImage(index) {
+            selectedFiles.splice(index, 1);
+            updateImagePreview();
+        }
+
+        // 图像分析
+        async function analyzeImages() {
+            if (selectedFiles.length === 0) {
+                showError('请先选择图像文件');
+                return;
+            }
+
+            const prompt = document.getElementById('promptInput').value.trim();
+            if (!prompt) {
+                showError('请输入分析指令');
+                return;
+            }
+
+            analyzeBtn.disabled = true;
+            analyzeBtn.textContent = '🔍 分析中...';
+            showLoading();
+
+            try {
+                // 这里应该调用实际的 Gemini API
+                // 由于这是演示页面，我们模拟一个响应
+                await simulateAnalysis(prompt);
+            } catch (error) {
+                showError('分析失败: ' + error.message);
+            } finally {
+                analyzeBtn.disabled = false;
+                analyzeBtn.textContent = '🔍 开始分析';
+            }
+        }
+
+        async function simulateAnalysis(prompt) {
+            // 模拟 API 调用延迟
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            const responses = [
+                '这是一张非常美丽的风景图片，画面中展现了壮丽的山脉和清澈的湖泊。天空呈现出渐变的蓝色，云朵轻盈地漂浮着，营造出一种宁静祥和的氛围。',
+                '图片中包含了丰富的自然元素，包括绿色的植被、蓝色的水域和灰色的岩石。整体色调和谐，构图平衡，给人一种视觉上的享受。',
+                '从情感角度来看，这张图片传达了一种宁静、平和的感觉，让人联想到大自然的壮美和生命的活力。'
+            ];
+
+            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+            
+            showSuccess(`
+                <h3>🎯 分析结果</h3>
+                <p><strong>指令:</strong> ${prompt}</p>
+                <p><strong>分析:</strong> ${randomResponse}</p>
+                <p><em>注意: 这是演示页面的模拟结果。在实际使用中，你需要配置 Gemini API 密钥来获得真实的 AI 分析结果。</em></p>
+            `);
+        }
+
+        function showLoading() {
+            results.innerHTML = '<div class="loading">🔄 AI 正在分析图像，请稍候...</div>';
+        }
+
+        function showError(message) {
+            results.innerHTML = `<div class="error">❌ ${message}</div>`;
+        }
+
+        function showSuccess(content) {
+            results.innerHTML = `<div class="success">✅ ${content}</div>`;
+        }
+    </script>
+</body>
+</html>
