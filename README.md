@@ -2,6 +2,9 @@
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub release](https://img.shields.io/github/v/release/chenxing3060/awesome-gemini-image-prompts)](https://github.com/chenxing3060/awesome-gemini-image-prompts/releases)
+[![GitHub stars](https://img.shields.io/github/stars/chenxing3060/awesome-gemini-image-prompts)](https://github.com/chenxing3060/awesome-gemini-image-prompts/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/chenxing3060/awesome-gemini-image-prompts)](https://github.com/chenxing3060/awesome-gemini-image-prompts/network)
 
 > 一个精选的 Gemini 图像分析提示词技巧合集，收集各种 KOL 和创作者的创意玩法，帮助你用最少的文字实现最有趣的效果！
 
@@ -143,10 +146,11 @@
 
 ## 📚 教程和指南
 
-- [官方文档](https://ai.google.dev/docs/gemini_api_overview)
-- [快速入门指南](https://ai.google.dev/tutorials/quickstart)
-- [最佳实践](https://ai.google.dev/docs/best_practices)
-- [API 参考](https://ai.google.dev/api/generative-ai)
+- [📖 项目主页](https://github.com/chenxing3060/awesome-gemini-image-prompts)
+- [🎯 提示词合集](https://github.com/chenxing3060/awesome-gemini-image-prompts/tree/main/prompts)
+- [🚀 快速入门教程](tutorials/getting_started.md)
+- [🤝 贡献指南](CONTRIBUTING.md)
+- [📖 官方文档](https://ai.google.dev/docs/gemini_api_overview)
 
 ## 🌐 社区资源
 
